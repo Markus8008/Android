@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">NYTimesOverview</string>
+    <string name="overview_text_value">NY Times Most Popular Articles Chooser</string>
+    <string name="radio_one_day_text">Last day</string>
+    <string name="radio_seven_days_text">7 days</string>
+    <string name="radio_thirty_days_text">30 days</string>
+    <string name="published_date_format">Published date: %s</string>
+    <string name="comment_number_label" tools:ignore="ExtraTranslation">comment number</string>
+    <string name="add_comment_button_label">Add comment</string>
+</resources>

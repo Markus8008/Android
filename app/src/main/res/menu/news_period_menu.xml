@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/last_day_menu"
+        android:title="@string/radio_one_day_text" />
+    <item
+        android:id="@+id/seven_days_menu"
+        android:title="@string/radio_seven_days_text" />
+    <item
+        android:id="@+id/thirty_days_menu"
+        android:title="@string/radio_thirty_days_text" />
+</menu>

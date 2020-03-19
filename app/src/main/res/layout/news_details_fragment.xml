@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.nytimesoverview.news.details.NewsDetailsViewModel" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:text="@{viewModel.selectedProperty.title}"
+                android:textAlignment="viewStart"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/url_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header_image" />
+
+            <ImageView
+                android:id="@+id/header_image"
+                android:layout_width="180dp"
+                android:layout_height="127dp"
+                android:layout_marginStart="@dimen/text_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:src="@android:drawable/presence_offline"
+                app:imageUrl="@{viewModel.selectedProperty.imageUrl}"
+                app:layout_constraintBottom_toTopOf="@+id/title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/published_text" />
+
+            <TextView
+                android:id="@+id/published_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:text="@{@string/published_date_format(viewModel.selectedProperty.publishedDate)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/url_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:autoLink="web"
+                android:text="@{viewModel.selectedProperty.url}"
+                android:textAlignment="viewStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_text" />
+
+            <Button
+                android:id="@+id/add_comment_button"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:fontFamily="serif"
+                android:text="@string/add_comment_button_label"
+                android:textAlignment="center"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/url_text" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/comments_list"
+                android:layout_width="0dp"
+                android:layout_height="500dp"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_comment_button"
+                app:listComments="@{viewModel.commentsData}"
+                app:spanCount="1"
+                tools:itemCount="16"
+                tools:listitem="@layout/comment_grid_item" />
+
+            <EditText
+                android:id="@+id/comment_text"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/text_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                app:layout_constraintBottom_toTopOf="@+id/comments_list"
+                app:layout_constraintEnd_toStartOf="@+id/add_comment_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/url_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

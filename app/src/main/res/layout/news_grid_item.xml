@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="property"
+            type="com.example.nytimesoverview.news.overview.model.NewsProperties" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/news_image"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:adjustViewBounds="true"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{property.imageUrl}"
+            app:layout_constraintBottom_toTopOf="@+id/published_text"
+            app:layout_constraintTop_toBottomOf="@+id/title_text"
+            tools:layout_editor_absoluteX="0dp"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{property.title}"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/news_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/published_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{@string/published_date_format(property.publishedDate)}"
+            android:textAlignment="viewStart"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/botom_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/news_image" />
+
+        <TextView
+            android:id="@+id/botom_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/published_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
